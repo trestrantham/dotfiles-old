@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Pretty pictures
+function e_header()  { echo -e "\n\033[1m$@\033[0m";      }
+function e_success() { echo -e " \033[1;32m✔\033[0m  $@"; }
+function e_error()   { echo -e " \033[1;31m✖\033[0m  $@"; }
+function e_arrow()   { echo -e " \033[1;33m➜\033[0m  $@"; }
+
+function install_formula() {
+  e_header "Installing ${@}"
+  brew install "${@}"
+
+  if [[ $? != 0 ]]; then
+    e_error "${@}"
+  else
+    e_success "${@}"
+  fi
+}
+
+e_header "Setting up Homebrew Formulas"
+brew update 2>/dev/null
+brew upgrade 2>/dev/null
+brew tap homebrew/dupes 2>/dev/null
+
+# Install GNU core utilities
+install_formula coreutils
+e_arrow "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
+
+install_formula findutils
+install_formula homebrew/dupes/grep
+install_formula homebrew/dupes/screen
+install_formula ack
+# install_formula imagemagick
+install_formula tmux
+
+e_header "Cleaning up"
+brew cleanup
