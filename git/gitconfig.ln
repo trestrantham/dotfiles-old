@@ -1,0 +1,20 @@
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore
+
+[user]
+  name = Tres Trantham
+  email = tres@trestrantham.com
+
+[author]
+  name = Tres Trantham
+  email = tres@trestrantham.com
+
+[color]
+  ui = true
+
+[github]
+  user = trestrantham
+
+[push]
+  default = current

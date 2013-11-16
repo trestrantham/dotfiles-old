@@ -1,0 +1,13 @@
+# Autocomplete
+require 'irb/completion'
+
+# Prompt behavior
+ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
+
+# History
+require 'irb/ext/save-history'
+IRB.conf[:SAVE_HISTORY] = 100
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
+
+require 'factory_girl';
+Dir.glob('./spec/factories**/*').each{|f| require f}

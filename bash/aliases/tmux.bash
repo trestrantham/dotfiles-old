@@ -1,0 +1,6 @@
+alias t='tmux -S ~/.tmux.socket'
+alias ta='t attach -t'
+alias tn='t new -s'
+alias tap='ta pair'
+alias tnp='ssh-agent tn pair'
+alias tls='t list-sessions'
