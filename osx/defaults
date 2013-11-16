@@ -1,109 +1,106 @@
 #!/usr/bin/env bash
 
-# ~/.osx — http://mths.be/osx
+# Pretty pictures
+function e_header()  { echo -e "\n\033[1m$@\033[0m";      }
+function e_success() { echo -e " \033[1;32m✔\033[0m  $@"; }
+function e_error()   { echo -e " \033[1;31m✖\033[0m  $@"; }
+function e_arrow()   { echo -e " \033[1;34m➜\033[0m  $@"; }
+
+e_header "Setting OS X defaults"
 
 # Ask for the administrator password upfront
 sudo -v
 
-# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+# Keep-alive: update existing `sudo` time stamp until `default` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ###############################################################################
-# General UI/UX                                                               #
+e_header "General UI/UX"
 ###############################################################################
 
-# Set computer name (as done via System Preferences → Sharing)
+e_arrow "Setting computer name"
 sudo scutil --set ComputerName "Icarus"
 sudo scutil --set HostName "Icarus"
 sudo scutil --set LocalHostName "Icarus"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Icarus"
 
-# Set standby delay to 24 hours (default is 1 hour)
+e_arrow "Setting standby delay to 24 hours"
 sudo pmset -a standbydelay 86400
 
-# Disable the sound effects on boot
+# echo "Disabling sound effects on boot"
 # sudo nvram SystemAudioVolume=" "
 
-# Menu bar: disable transparency
+# echo "Disabling menubar transparency
 # defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
-# Menu bar: show remaining battery time (on pre-10.8); hide percentage
+e_arrow "Configuring menubar battery time and percentage"
 defaults write com.apple.menuextra.battery ShowPercent -string "NO"
 defaults write com.apple.menuextra.battery ShowTime -string "YES"
 
-# Menu bar: hide the useless Time Machine and Volume icons
+e_arrow "Hiding Time Machine and Volume menubar icons"
 defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/AirPort.menu" "/System/Library/CoreServices/Menu Extras/Battery.menu" "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
-# Set sidebar icon size to medium
+e_arrow "Setting sidebar icon size to small"
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 
-# Always show scrollbars
+e_arrow "Always show scrollbars"
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
-# Increase window resize speed for Cocoa applications
+e_arrow "Increasing window resize speed"
 defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
-# Expand save panel by default
+e_arrow "Expanding save panel by default"
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
-# Expand print panel by default
+e_arrow "Expanding print panel by default"
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
-# Save to disk (not to iCloud) by default
+e_arrow "Setting disk as default when saving"
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-# Automatically quit printer app once the print jobs complete
+e_arrow "Automatically quit printer app when print jobs complete"
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-# Disable the “Are you sure you want to open this application?” dialog
+e_arrow "Disabling confirm open application dialog"
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Display ASCII control characters using caret notation in standard text views
 # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
+e_arrow "Displaying ASCII control characters using caret notation"
 defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
 
-# Disable Resume system-wide
+e_arrow "Disabling resume system-wide"
 defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 
-# Disable automatic termination of inactive apps
+e_arrow "Disabling automatic termination of inactive apps"
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
-# Disable the crash reporter
+# e_arrow "Disabling the crash reporter"
 # defaults write com.apple.CrashReporter DialogType -string "none"
 
-# Set Help Viewer windows to non-floating mode
+e_arrow "Setting Help Viewer windows to non-floating mode"
 defaults write com.apple.helpviewer DevMode -bool true
 
-# Fix for the ancient UTF-8 bug in QuickLook (http://mths.be/bbo)
-# Commented out, as this is known to cause problems in various Adobe apps :(
-# See https://github.com/mathiasbynens/dotfiles/issues/237
-# echo "0x08000100:0" > ~/.CFUserTextEncoding
-
-# Reveal IP address, hostname, OS version, etc. when clicking the clock
-# in the login window
+e_arrow "Reveal IP address, hostname, OS version when clicking clock in login window"
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
-# Restart automatically if the computer freezes
-systemsetup -setrestartfreeze on
-
-# Never go into computer sleep mode
+# e_arrow "Disabling sleep mode"
 # systemsetup -setcomputersleep Off > /dev/null
 
-# Check for software updates daily, not just once per week
+e_arrow "Check for software updates daily"
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
-# Disable Notification Center and remove the menu bar icon
-# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+e_arrow "Disabling Notification Center"
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
-# Disable smart quotes as they’re annoying when typing code
+e_arrow "Disabling smart quotes"
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
-# Disable smart dashes as they’re annoying when typing code
+e_arrow "Disabling smart dashes"
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 ###############################################################################
-# SSD-specific tweaks                                                         #
+e_header "SSD-specific tweaks"
 ###############################################################################
 
 # Disable local Time Machine snapshots
@@ -123,13 +120,17 @@ sudo chflags uchg /Private/var/vm/sleepimage
 sudo pmset -a sms 0
 
 ###############################################################################
-# Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
+e_header "Trackpad, mouse, keyboard, Bluetooth accessories, and input"
 ###############################################################################
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Set mouse tracking speed
+defaults write NSGlobalDoman com.apple.mouse.scaling 3.0
+# defaults delete NSGlobalDoman com.apple.mouse.scaling
 
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
@@ -167,7 +168,7 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 # launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
 ###############################################################################
-# Screen                                                                      #
+e_header "Screen"
 ###############################################################################
 
 # Require password immediately after sleep or screen saver begins
@@ -190,7 +191,7 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 ###############################################################################
-# Finder                                                                      #
+e_header "Finder"
 ###############################################################################
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
@@ -295,7 +296,7 @@ file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
 [ -e "${file}" ] && mv -f "${file}" "${file}.bak"
 
 ###############################################################################
-# Dock, Dashboard, and hot corners                                            #
+e_header "Dock and Dashboard"
 ###############################################################################
 
 # Enable highlight hover effect for the grid view of a stack (Dock)
@@ -358,35 +359,8 @@ find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
 # Add iOS Simulator to Launchpad
 sudo ln -sf /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app /Applications/iOS\ Simulator.app
 
-# Add a spacer to the left side of the Dock (where the applications are)
-# defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
-# Add a spacer to the right side of the Dock (where the Trash is)
-# defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
-
-# Hot corners
-# Possible values:
-#  0: no-op
-#  2: Mission Control
-#  3: Show application windows
-#  4: Desktop
-#  5: Start screen saver
-#  6: Disable screen saver
-#  7: Dashboard
-# 10: Put display to sleep
-# 11: Launchpad
-# 12: Notification Center
-# Top left screen corner → Mission Control
-# defaults write com.apple.dock wvous-tl-corner -int 2
-# defaults write com.apple.dock wvous-tl-modifier -int 0
-# Top right screen corner → Desktop
-# defaults write com.apple.dock wvous-tr-corner -int 4
-# defaults write com.apple.dock wvous-tr-modifier -int 0
-# Bottom left screen corner → Start screen saver
-# defaults write com.apple.dock wvous-bl-corner -int 5
-# defaults write com.apple.dock wvous-bl-modifier -int 0
-
 ###############################################################################
-# Safari & WebKit                                                             #
+e_header "Safari & WebKit"
 ###############################################################################
 
 # Set Safari’s home page to `about:blank` for faster loading
@@ -422,7 +396,7 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 ###############################################################################
-# Mail                                                                        #
+e_header "Mail"
 ###############################################################################
 
 # Disable send and reply animations in Mail.app
@@ -447,7 +421,7 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 # defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled"
 
 ###############################################################################
-# Spotlight                                                                   #
+e_header "Spotlight"
 ###############################################################################
 
 # Hide Spotlight tray-icon (and subsequent helper)
@@ -487,7 +461,7 @@ sudo mdutil -i on / > /dev/null
 sudo mdutil -E / > /dev/null
 
 ###############################################################################
-# Terminal & iTerm 2                                                          #
+e_header "Terminal & iTerm 2"
 ###############################################################################
 
 # Only use UTF-8 in Terminal.app
@@ -511,7 +485,7 @@ open "${HOME}/init/Mathias.itermcolors"
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 ###############################################################################
-# Time Machine                                                                #
+e_header "Time Machine"
 ###############################################################################
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
@@ -521,7 +495,7 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 ###############################################################################
-# Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
+e_header "Address Book, Dashboard, Calendar, TextEdit, and Disk Utility"
 ###############################################################################
 
 # Enable the debug menu in Address Book
@@ -542,7 +516,7 @@ defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
 defaults write com.apple.DiskUtility advanced-image-options -bool true
 
 ###############################################################################
-# Mac App Store                                                               #
+e_header "Mac App Store"
 ###############################################################################
 
 # Enable the WebKit Developer Tools in the Mac App Store
@@ -552,7 +526,7 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 defaults write com.apple.appstore ShowDebugMenu -bool true
 
 ###############################################################################
-# Messages                                                                    #
+e_header "Messages"
 ###############################################################################
 
 # Disable automatic emoji substitution (i.e. use plain text smileys)
@@ -565,29 +539,14 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
 ###############################################################################
-# Google Chrome & Google Chrome Canary                                        #
-###############################################################################
-
-# Allow installing user scripts via GitHub or Userscripts.org
-defaults write com.google.Chrome ExtensionInstallSources -array "https://*.github.com/*" "http://userscripts.org/*"
-defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://*.github.com/*" "http://userscripts.org/*"
-
-###############################################################################
-# GPGMail 2                                                                   #
-###############################################################################
-
-# Disable signing emails by default
-defaults write ~/Library/Preferences/org.gpgtools.gpgmail SignNewEmailsByDefault -bool false
-
-###############################################################################
-# Sublime Text                                                                #
+e_header "Sublime Text"
 ###############################################################################
 
 # Install Sublime Text settings
 cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
 
 ###############################################################################
-# Transmission.app                                                            #
+e_header "Transmission"
 ###############################################################################
 
 # Use `~/Documents/Torrents` to store incomplete downloads
@@ -607,7 +566,7 @@ defaults write org.m0k.transmission WarningDonate -bool false
 defaults write org.m0k.transmission WarningLegal -bool false
 
 ###############################################################################
-# Kill affected applications                                                  #
+e_header "Restart affected applications"
 ###############################################################################
 
 for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder" "Mail" \
