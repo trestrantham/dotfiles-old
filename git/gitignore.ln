@@ -8,3 +8,5 @@
 /bin/*
 !/bin/*.rb
 /*.pem
+bundle/**
+~bundle/vundle

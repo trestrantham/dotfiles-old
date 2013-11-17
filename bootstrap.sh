@@ -38,18 +38,22 @@ if [[ ! "$(type -P git)" ]]; then
   exit 1
 fi
 
+# Set our system defaults
+for f in `find $( dirname "$BASH_SOURCE[0]" ) -name 'defaults'`; do
+  ./$f
+done
 
+# Install all our Homebrew formulas
+for f in `find $( dirname "$BASH_SOURCE[0]" ) -name 'brew'`; do
+  ./$f
+done
 
+# Install all our Homebrew casks
+for f in `find $( dirname "$BASH_SOURCE[0]" ) -name 'cask'`; do
+  ./$f
+done
 
-
-
-
-
-
-
-
-# exit 1
-
+# Symlink all our `.ln` files
 for f in `find $( dirname "$BASH_SOURCE[0]" ) -name '*.ln'`; do
   filename=$(basename "$f")
   if [ -e "$HOME/.${filename%.ln}" ]
@@ -57,7 +61,8 @@ for f in `find $( dirname "$BASH_SOURCE[0]" ) -name '*.ln'`; do
     rm "$HOME/.${filename%.ln}"
   fi
 
-  ln -s "$( greadlink -f "$f" )" "$HOME/.${filename%.ln}"
+  ln -s -f "$( greadlink -f "$f" )" "$HOME/.${filename%.ln}"
 done
 
+# Run vundler
 vim -u ~/.vim/bundles.vim +BundleInstall +qall
