@@ -26,18 +26,6 @@ if [[ ! "$(type -P brew)" ]]; then
   exit 1
 fi
 
-# If Git isn't installed, try installing via homebrew
-if [[ ! "$(type -P git)" ]]; then
-  e_header "Installing Git"
-  brew install git
-fi
-
-# If Git isn't installed by now, die horribly
-if [[ ! "$(type -P git)" ]]; then
-  e_error "Git should be installed. It isn't. Aborting."
-  exit 1
-fi
-
 # Set our system defaults
 for f in `find $( dirname "$BASH_SOURCE[0]" ) -name 'defaults'`; do
   ./$f

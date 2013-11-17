@@ -22,16 +22,22 @@ brew update 2>/dev/null
 brew upgrade 2>/dev/null
 brew tap homebrew/dupes 2>/dev/null
 
-# Install GNU core utilities
+# Development
+install_formula git
+install_formula tmux
+
+# Ruby
+install_formula chruby
+install_formula install-ruby
+
+# Shell
+install_formula ack
+install_formula bash-completion
 install_formula coreutils
 e_arrow "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
-
-install_formula findutils
 install_formula homebrew/dupes/grep
 install_formula homebrew/dupes/screen
-install_formula ack
-# install_formula imagemagick
-install_formula tmux
+install_formula findutils
 
 e_header "Cleaning up"
 brew cleanup
