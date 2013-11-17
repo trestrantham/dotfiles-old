@@ -16,3 +16,6 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 for f in `find $DIR -name '*.bash'`; do source "$f"; done
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+source /usr/local/share/chruby/chruby.sh # Load chruby
+source /usr/local/share/chruby/auto.sh # Set chruby to auto-switch rubies
