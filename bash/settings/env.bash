@@ -3,7 +3,7 @@ export EDITOR="vim"
 export NODE_PATH="/usr/local/lib/node"
 export LANG="en_US.UTF-8"
 export PGLOG="/usr/local/var/postgres/server.log"
-export TERM="screen-256color"
+export TERM="xterm-256color"
 
 export GIT_PS1_SHOWDIRTYSTATE=Y
 
