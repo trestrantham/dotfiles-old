@@ -16,3 +16,6 @@ nmap <leader>gc :Gcommit<CR>
 
 """ NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
+
+""" Commentary
+nmap <leader>c gcc<CR>
