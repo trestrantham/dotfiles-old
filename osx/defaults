@@ -24,6 +24,11 @@ sudo scutil --set HostName "Icarus"
 sudo scutil --set LocalHostName "Icarus"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Icarus"
 
+e_arrow "Disabling Guest account"
+defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool NO
+defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool NO
+defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool NO
+
 e_arrow "Setting standby delay to 24 hours"
 sudo pmset -a standbydelay 86400
 
@@ -106,8 +111,8 @@ e_header "SSD-specific tweaks"
 e_arrow "Disabling local Time Machine snapshots"
 sudo tmutil disablelocal
 
-e_arrow "Disabling hibernation" # (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
+# e_arrow "Disabling hibernation" # speeds up entering sleep mode
+# sudo pmset -a hibernatemode 0
 
 e_arrow "Removing sleep image file" # to save disk space
 sudo rm -f /Private/var/vm/sleepimage
@@ -143,9 +148,8 @@ e_arrow "Enabling scroll gesture with Ctrl (^) modifier to zoom"
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 
-e_arrow "Map Caps Lock key to Control"
-defaults -currentHost write -g com.apple.keyboard.modifiermapping '({HIDKeyboardModifierMappingSrc=0; HIDKeyboardModifierMappingDst=2;})'
-defaults -currentHost write -g com.apple.keyboard.modifiermapping.1452-597-0 '({HIDKeyboardModifierMappingSrc=0; HIDKeyboardModifierMappingDst=2;})'
+e_arrow "Map Caps Lock key to Control" # Maps for all connected keyboards
+ioreg -n IOHIDKeyboard -r | grep -E 'VendorID"|ProductID' | awk '{ print $4 }' | paste -s -d'-\n' - | xargs -I{} /usr/bin/defaults -currentHost write -g "com.apple.keyboard.modifiermapping.{}-0" -array "<dict><key>HIDKeyboardModifierMappingDst</key><integer>2</integer><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer></dict>"
 
 e_arrow "Follow the keyboard focus while zoomed in"
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
@@ -175,9 +179,9 @@ systemsetup -settimezone "America/Detroit" > /dev/null
 e_header "Screen"
 ###############################################################################
 
-e_arrow "Requiring password immediately after sleep or screen saver begins"
+e_arrow "Requiring password after sleep or screen saver begins"
 defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
+defaults write com.apple.screensaver askForPasswordDelay -int 30 # 30 seconds
 
 e_arrow "Save screenshots to the desktop"
 defaults write com.apple.screencapture location -string "${HOME}/Desktop"
@@ -323,6 +327,7 @@ defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Safari.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iTerm.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Messages.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 
 # e_arrow "Disabling animation when opening applications from the Dock"
 # defaults write com.apple.dock launchanim -bool false
@@ -477,9 +482,9 @@ defaults write com.apple.terminal StringEncodings -array 4
 
 e_arrow "Installing Solarized themes for Terminal"
 open "$BASH_SOURCE[0]/../../config/Solarized Dark.terminal"
-sleep 1 # Wait a bit to make sure the theme is loaded
+sleep 1
 open "$BASH_SOURCE[0]/../../config/Solarized Light.terminal"
-sleep 1 # Wait a bit to make sure the theme is loaded
+sleep 1
 defaults write com.apple.terminal "Default Window Settings" -string "Solarized Dark"
 defaults write com.apple.terminal "Startup Window Settings" -string "Solarized Dark"
 
