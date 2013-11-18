@@ -26,18 +26,19 @@ if [[ ! "$(type -P brew)" ]]; then
   exit 1
 fi
 
-# Set our system defaults
-for f in `find $( dirname "$BASH_SOURCE[0]" ) -name 'defaults'`; do
-  ./$f
-done
-
 # Install all our Homebrew formulas
-for f in `find $( dirname "$BASH_SOURCE[0]" ) -name 'brew'`; do
+for f in `find $( dirname "$BASH_SOURCE[0]" ) -name 'brew.sh'`; do
   ./$f
 done
 
 # Install all our Homebrew casks
-for f in `find $( dirname "$BASH_SOURCE[0]" ) -name 'cask'`; do
+for f in `find $( dirname "$BASH_SOURCE[0]" ) -name 'cask.sh'`; do
+  ./$f
+done
+
+# Set our system defaults
+e_header "Setting OS X defaults"
+for f in `find $( dirname "$BASH_SOURCE[0]" )/osx -name '*.sh'`; do
   ./$f
 done
 
@@ -54,3 +55,5 @@ done
 
 # Run vundler
 vim -u ~/.vim/bundles.vim +BundleInstall +qall
+
+e_success "Done. Time to restart."
