@@ -34,7 +34,7 @@ bash_prompt() {
   local UC=$W                 # user's color
   [ $UID -eq "0" ] && UC=$R   # root's color
 
-  PS1="$B\W $C\$(__git_ps1 "[%s]")${NONE} → "
+  PS1="$B\W$C\$(__git_ps1)${NONE} → "
 }
 
 bash_prompt
