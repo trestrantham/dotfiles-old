@@ -1,14 +1,16 @@
-set relativenumber
+set number
 
-function! LineNumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunction
+" set relativenumber
 
-nnoremap <C-n> :call LineNumberToggle()<cr>
+" function! LineNumberToggle()
+"   if(&relativenumber == 1)
+"     set number
+"   else
+"     set relativenumber
+"   endif
+" endfunction
 
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
+" nnoremap <C-n> :call LineNumberToggle()<cr>
+
+" autocmd InsertEnter * :set number
+" autocmd InsertLeave * :set relativenumber
