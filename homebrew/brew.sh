@@ -25,10 +25,11 @@ brew tap homebrew/dupes 2>/dev/null
 # Development
 install_formula git
 install_formula tmux
+install_formula reattach-to-user-namespace
 
 # Ruby
 install_formula chruby
-install_formula install-ruby
+install_formula ruby-install
 
 # Shell
 install_formula ack
