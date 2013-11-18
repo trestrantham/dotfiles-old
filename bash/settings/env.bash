@@ -11,3 +11,6 @@ export GIT_PS1_SHOWDIRTYSTATE=Y
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+
+# Rubies source directory
+export SRC_DIR="~/.rubies/src"
