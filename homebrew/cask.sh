@@ -24,13 +24,17 @@ brew install brew-cask 2>/dev/null
 install_cask alfred
 install_cask backblaze-downloader
 install_cask bartender
+install_cask bittorrent-sync
+install_cask cloak
 install_cask dropbox
 install_cask github
 install_cask google-chrome
 install_cask heroku-toolbelt
 install_cask istat-menus
 install_cask iterm2
+install_cask keepassx
 install_cask knock
+install_cask mou
 install_cask sublime-text
 install_cask transmission
 install_cask vlc
