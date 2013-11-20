@@ -29,6 +29,7 @@ install_formula reattach-to-user-namespace
 install_formula the_silver_searcher
 install_formula mysql
 install_formula postgresql
+install_formula redis
 
 # Ruby
 install_formula chruby
