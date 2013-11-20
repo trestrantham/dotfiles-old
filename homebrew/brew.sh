@@ -24,12 +24,12 @@ brew tap homebrew/dupes 2>/dev/null
 
 # Development
 install_formula git
-install_formula tmux
-install_formula reattach-to-user-namespace
-install_formula the_silver_searcher
 install_formula mysql
 install_formula postgresql
+install_formula reattach-to-user-namespace
 install_formula redis
+install_formula the_silver_searcher
+install_formula tmux
 
 # Ruby
 install_formula chruby
@@ -40,9 +40,21 @@ install_formula ack
 install_formula bash-completion
 install_formula coreutils
 e_arrow "Don't forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
+install_formula findutils
 install_formula homebrew/dupes/grep
 install_formula homebrew/dupes/screen
-install_formula findutils
+
+# QuickTime
+echo
+echo "About to install QuickTime. This will take a LONG time."
+read -p "Are you sure you want to do this now? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  install_formula qt --HEAD
+else
+  e_arrow "Skipping QuickTime"
+fi
 
 e_header "Cleaning up"
 brew cleanup
