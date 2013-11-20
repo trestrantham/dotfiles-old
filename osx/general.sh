@@ -13,9 +13,11 @@ sudo scutil --set LocalHostName "Icarus"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Icarus"
 
 e_arrow "Disabling Guest account"
-sudo defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool NO
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool NO
-defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool NO
+sudo defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool FALSE
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool FALSE
+sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool FALSE
+sudo defaults write /Library/Preferences/com.apple.loginwindow Hide500Users -bool TRUE
+sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool FALSE
 
 e_arrow "Setting standby delay to 24 hours"
 sudo pmset -a standbydelay 86400
@@ -31,13 +33,14 @@ defaults write com.apple.menuextra.battery ShowPercent -string "NO"
 defaults write com.apple.menuextra.battery ShowTime -string "YES"
 
 e_arrow "Hiding Time Machine and Volume menubar icons"
-defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/AirPort.menu" "/System/Library/CoreServices/Menu Extras/Battery.menu" "/System/Library/CoreServices/Menu Extras/Clock.menu"
+sudo defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/AirPort.menu" "/System/Library/CoreServices/Menu Extras/Battery.menu" "/System/Library/CoreServices/Menu Extras/Clock.menu"
+sudo defaults -currentHost write com.apple.systemuiserver dontAutoLoad -array "/System/Library/CoreServices/Menu Extras/TimeMachine.menu"
 
 e_arrow "Setting sidebar icon size to small"
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 
-e_arrow "Always show scrollbars"
-defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+e_arrow "Automatically show scrollbars"
+defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
 e_arrow "Increasing window resize speed"
@@ -91,3 +94,21 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 e_arrow "Disabling smart dashes"
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+e_arrow "Changing appearance color to Graphite"
+defaults write -g 'AppleAquaColorVariant' -int 6
+
+e_arrow "Changing highlight color to Graphite"
+defaults write -g 'AppleHighlightColor' -string '0.7804 0.8157 0.8588'
+
+e_arrow "Setting screen savers to Flurry"
+sudo defaults write com.apple.screensaver moduleName "Flurry"
+sudo defaults write com.apple.screensaver modulePath "/System/Library/Screen Savers/Flurry.saver"
+sudo defaults write /Library/Preferences/com.apple.screensaver loginWindowModulePath "/System/Library/Screen Savers/Flurry.saver"
+
+e_arrow "Setting screen savers delay to 5 minutes"
+sudo defaults write com.apple.screensaver idleTime -int 300
+sudo defaults write /Library/Preferences/com.apple.screensaver loginWindowIdleTime -int 300
+
+e_arrow "Disabling Dashboard as a Space"
+defaults write com.apple.dock dashboard-in-overlay -bool true
