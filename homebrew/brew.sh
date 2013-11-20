@@ -26,6 +26,9 @@ brew tap homebrew/dupes 2>/dev/null
 install_formula git
 install_formula tmux
 install_formula reattach-to-user-namespace
+install_formula the_silver_searcher
+install_formula mysql
+install_formula postgresql
 
 # Ruby
 install_formula chruby
@@ -35,7 +38,7 @@ install_formula ruby-install
 install_formula ack
 install_formula bash-completion
 install_formula coreutils
-e_arrow "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
+e_arrow "Don't forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
 install_formula homebrew/dupes/grep
 install_formula homebrew/dupes/screen
 install_formula findutils
