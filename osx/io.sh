@@ -15,6 +15,17 @@ e_arrow "Setting mouse tracking speed"
 defaults write NSGlobalDoman com.apple.mouse.scaling 3.0
 # defaults delete NSGlobalDoman com.apple.mouse.scaling
 
+e_arrow "Setting up Magic Mouse"
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonDivision -int 55
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonMode -string "TwoButton"
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseHorizontalScroll -int 1
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseMomentumScroll -int 1
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseOneFingerDoubleTapGesture -int 1
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseTwoFingerDoubleTapGesture -int 3
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseTwoFingerHorizSwipeGesture -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseVerticalScroll -int 1
+defaults write com.apple.driver.AppleBluetoothMultitouch.mouse UserPreference -int 1
+
 e_arrow "Increasing sound quality for Bluetooth headphones/headsets"
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
