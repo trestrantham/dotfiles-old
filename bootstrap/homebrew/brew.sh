@@ -1,21 +1,6 @@
 #!/usr/bin/env bash
 
-# Pretty pictures
-function e_header()  { echo -e "\n\033[1m$@\033[0m";      }
-function e_success() { echo -e " \033[1;32m✔\033[0m  $@"; }
-function e_error()   { echo -e " \033[1;31m✖\033[0m  $@"; }
-function e_arrow()   { echo -e " \033[1;33m➜\033[0m  $@"; }
-
-function install_formula() {
-  e_header "Installing ${@}"
-  brew install "${@}"
-
-  if [[ $? != 0 ]]; then
-    e_error "${@}"
-  else
-    e_success "${@}"
-  fi
-}
+source ${BASH_SOURCE[0]%/*/*}/include.sh
 
 e_header "Setting up Homebrew Formulas"
 brew update 2>/dev/null
@@ -48,6 +33,7 @@ install_formula homebrew/dupes/screen
 echo
 echo "About to install QuickTime. This will take a LONG time."
 read -p "Are you sure you want to do this now? " -n 1 -r
+echo
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
