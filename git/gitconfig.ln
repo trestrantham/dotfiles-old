@@ -10,11 +10,20 @@
   name = Tres Trantham
   email = tres@trestrantham.com
 
+[help]
+  autocorrect = 1
+
 [color]
   ui = true
+
+[alias]
+  ctags = !.git/hooks/ctags
 
 [github]
   user = trestrantham
 
 [push]
   default = current
+
+[web]
+  broswer = open
