@@ -10,9 +10,7 @@ e_rocket "Only use UTF-8 in Terminal"
 defaults write com.apple.terminal StringEncodings -array 4
 
 e_rocket "Installing Solarized themes for Terminal"
-open "$BASH_SOURCE[0]/../../config/Solarized Dark.terminal"
-sleep 1
-open "$BASH_SOURCE[0]/../../config/Solarized Light.terminal"
+open "${BASH_SOURCE[0]%/*/*/*}/config/Solarized Dark.terminal"
 sleep 1
 defaults write com.apple.terminal "Default Window Settings" -string "Solarized Dark"
 defaults write com.apple.terminal "Startup Window Settings" -string "Solarized Dark"
