@@ -7,7 +7,8 @@ echo
 
 PS3=$'\nPick your poison: '
 options=("Bootstrap all the things" "GCC" "Dotfiles" "Homebrew" \
-         "Homebrew Formulas" "Homebrew Casks" "OS X Defaults" "Quit")
+         "Homebrew Formulas" "Homebrew Casks" "OS X Defaults" \
+         "Remote Pair User" "Quit")
 
 select opt in "${options[@]}"; do
   case $opt in
@@ -18,39 +19,44 @@ select opt in "${options[@]}"; do
       install_formulas
       install_casks
       install_defaults
+      create_pair_user
       ;;
     "GCC")
-      e_header "Installing $opt"
+      e_header "$opt"
       install_gcc
       ;;
     "Dotfiles")
-      e_header "Installing $opt"
+      e_header "$opt"
       install_dotfiles
       ;;
     "Homebrew")
-      e_header "Installing $opt"
+      e_header "$opt"
       install_gcc
       install_homebrew
       ;;
     "Homebrew Formulas")
-      e_header "Installing $opt"
+      e_header "$opt"
       install_gcc
       install_homebrew
       install_formulas
       ;;
     "Homebrew Casks")
-      e_header "Installing $opt"
+      e_header "$opt"
       install_gcc
       install_homebrew
       install_casks
       ;;
     "OS X Defaults")
-      e_header "Installing $opt"
+      e_header "$opt"
       install_defaults
+      ;;
+    "Remote Pair User")
+      e_header "$opt"
+      create_pair_user
       ;;
     "Quit")
       echo
-      e_arrow "All done. You must restart for these changes to take effect."
+      e_success "All done. You must restart for these changes to take effect."
       break;;
     *) echo invalid option;;
   esac

@@ -19,7 +19,7 @@ function install_gcc {
     e_arrow "Couldn't find Xcode or Command Line Tools. Trying to install Command Line Tools now."
 
     # Install CLI Tools
-    # ./config/install_cli_tools.sh
+    source ${BASH_SOURCE[0]%/*}/config/install_cli_tools.sh
 
     if [[ $? != 0 ]]; then
       e_error "GCC did not install successfully. Try again."
@@ -28,12 +28,6 @@ function install_gcc {
     fi
   else
     e_arrow "GCC is installed."
-  fi
-
-  # Ensure that we have gcc
-  if [[ ! "$(type -P gcc)" ]]; then
-    e_error "Xcode or Command Line Tools must be installed before continuing."
-    exit 1
   fi
 }
 
@@ -117,6 +111,11 @@ function install_defaults {
   else
     e_arrow "Skipping Cask applications"
   fi
+}
+
+# Remote pair user
+function create_pair_user() {
+  source ${BASH_SOURCE[0]%/*}/osx/users/pair.sh
 }
 
 # Brew formulas
