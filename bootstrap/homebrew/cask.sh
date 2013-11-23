@@ -30,7 +30,7 @@ IFS=$(echo -en "\n\b")
 
 e_header "Moving casks to /Applications"
 for f in `find "/opt/homebrew-cask/Caskroom" -name '*.app' -maxdepth 3`; do
-  rm -r "/Applications/$( basename $f)"
+  rm -rf "/Applications/$( basename $f)"
   e_rocket "$f \033[1;33m➜\033[0m /Applications/$( basename $f)"
   mv -f "$f" /Applications
 done
