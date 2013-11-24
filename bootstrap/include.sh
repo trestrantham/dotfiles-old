@@ -113,9 +113,14 @@ function install_defaults {
   fi
 }
 
-# Remote pair user
-function create_pair_user() {
-  source ${BASH_SOURCE[0]%/*}/osx/users/pair.sh
+# Ruby gems
+function install_gems() {
+  source ${BASH_SOURCE[0]%/*}/ruby/gems.sh
+}
+
+# Remote pair
+function setup_remote_pair() {
+  source ${BASH_SOURCE[0]%/*}/osx/remote/pair.sh
 }
 
 # Brew formulas
@@ -139,6 +144,18 @@ function install_formula() {
 function install_cask() {
   e_header "Installing ${@}"
   brew cask install --appdir="/Applications" --force "${@}"
+
+  if [[ $? != 0 ]]; then
+    e_error "${@}"
+  else
+    e_success "${@}"
+  fi
+}
+
+# Ruby gems
+function install_gem() {
+  e_header "Installing ${@}"
+  gem install "${@}"
 
   if [[ $? != 0 ]]; then
     e_error "${@}"
