@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SCRIPT_PATH=$( cd $(dirname $0) ; pwd -P )
+SCRIPT_PATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source ${SCRIPT_PATH%/*}/include.sh
 
 e_header "Setting up Homebrew Formulas"
@@ -11,6 +11,7 @@ brew tap homebrew/dupes 2>/dev/null
 # Development
 install_formula git
 install_formula mysql
+install_formula openssl
 install_formula postgresql
 install_formula reattach-to-user-namespace
 install_formula redis

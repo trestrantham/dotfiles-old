@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+SCRIPT_PATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P )
+
 # Pretty pictures
 function e_header()  { echo -e "\n\033[1m$@\033[0m";      }
 function e_success() { echo -e " \033[1;32m✔\033[0m  $@"; }
@@ -19,12 +21,13 @@ function install_gcc {
     e_arrow "Couldn't find Xcode or Command Line Tools. Trying to install Command Line Tools now."
 
     # Install CLI Tools
-    source ${BASH_SOURCE[0]%/*}/config/install_cli_tools.sh
+    source $SCRIPT_PATH/config/install_cli_tools.sh
 
     if [[ $? != 0 ]]; then
       e_error "GCC did not install successfully. Try again."
     else
       e_success "GCC installed successfully."
+      e_arrow "You must open Xcode to accept the license terms before continuing."
     fi
   else
     e_arrow "GCC is installed."
@@ -33,13 +36,16 @@ function install_gcc {
 
 function install_dotfiles {
   # Symlink all our `.ln` files
-  for f in `find $( dirname "$BASH_SOURCE[0]" ) -name '*.ln'`; do
+
+  for f in `find ${SCRIPT_PATH%/*} -name '*.ln'`; do
+echo $f
     filename=$(basename "$f")
     if [ -e "$HOME/.${filename%.ln}" ]
     then
+echo 'removing'
       rm "$HOME/.${filename%.ln}"
     fi
-
+echo $filename
     ln -s -f "$( greadlink -f "$f" )" "$HOME/.${filename%.ln}"
   done
 
@@ -52,11 +58,12 @@ function install_homebrew {
   if [[ ! "$(type -P brew)" ]]; then
     e_arrow "Couldn't find Homebrew. Trying to install now."
 
-    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
 
     if [[ $? != 0 ]]; then
       e_error "Homebrew did not install successfully. Try again."
     else
+      brew doctor
       e_success "Homebrew installed successfully."
     fi
   else
@@ -71,11 +78,11 @@ function install_homebrew {
 }
 
 function install_formulas {
-  source ${BASH_SOURCE[0]%/*}/homebrew/brew.sh
+  source $SCRIPT_PATH/homebrew/brew.sh
 }
 
 function install_casks {
-  source ${BASH_SOURCE[0]%/*}/homebrew/cask.sh
+  source $SCRIPT_PATH/homebrew/cask.sh
 }
 
 function install_defaults {
@@ -83,7 +90,7 @@ function install_defaults {
   read -p "Install system defaults? " -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
-    for f in `find $( dirname "$BASH_SOURCE[0]" )/osx/system -name '*.sh'`; do
+    for f in `find $SCRIPT_PATH/osx/system -name '*.sh'`; do
       ./$f
     done
   else
@@ -94,7 +101,7 @@ function install_defaults {
   read -p "Install defaults for Mac App Store applications? " -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
-    for f in `find $( dirname "$BASH_SOURCE[0]" )/osx/mas_apps -name '*.sh'`; do
+    for f in `find $SCRIPT_PATH/osx/mas_apps -name '*.sh'`; do
       ./$f
     done
   else
@@ -105,7 +112,7 @@ function install_defaults {
   read -p "Install defaults for Cask applications? " -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
-    for f in `find $( dirname "$BASH_SOURCE[0]" )/osx/cask_apps -name '*.sh'`; do
+    for f in `find $SCRIPT_PATH/osx/cask_apps -name '*.sh'`; do
       ./$f
     done
   else
@@ -115,12 +122,17 @@ function install_defaults {
 
 # Ruby gems
 function install_gems() {
-  source ${BASH_SOURCE[0]%/*}/ruby/gems.sh
+  source $SCRIPT_PATH/ruby/gems.sh
+}
+
+# Rubies
+function install_rubies() {
+  source $SCRIPT_PATH/ruby/rubies.sh
 }
 
 # Remote pair
 function setup_remote_pair() {
-  source ${BASH_SOURCE[0]%/*}/osx/remote/pair.sh
+  source $SCRIPT_PATH/osx/remote/pair.sh
 }
 
 # Brew formulas
