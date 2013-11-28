@@ -16,6 +16,8 @@ sudo perl -pi -e 's/^#ChallengeResponseAuthentication/ChallengeResponseAuthentic
 sudo perl -pi -e 's/^ChallengeResponseAuthentication\s+yes/ChallengeResponseAuthentication no/' /etc/sshd_config
 
 e_rocket "Configuring SSH public keys"
+touch ~/.ssh/authorized_keys
+
 users=( albus522 bryckbost danielmorrison emilford \
         ersatzryan gaffneyc jasonroelofs jcarpenter88 \
         laserlemon manlycode pichot tbugai trestrantham )
