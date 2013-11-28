@@ -16,8 +16,12 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 function install_dotfiles {
-  # Symlink all our `.ln` files
+  e_rocket "Updating submodules"
+  git submodule init
+  git submodule update
 
+  e_rocket "Configuring dotfiles"
+  # Symlink all our `.ln` files
   for f in `find ${SCRIPT_PATH%/*} -name '*.ln'`; do
     filename=$(basename "$f")
 
@@ -65,7 +69,7 @@ function install_defaults {
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     for f in `find $SCRIPT_PATH/osx/system -name '*.sh'`; do
-      ./$f
+      $f
     done
   fi
 
@@ -74,7 +78,7 @@ function install_defaults {
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     for f in `find $SCRIPT_PATH/osx/mas_apps -name '*.sh'`; do
-      ./$f
+      $f
     done
   fi
 
@@ -83,7 +87,7 @@ function install_defaults {
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     for f in `find $SCRIPT_PATH/osx/cask_apps -name '*.sh'`; do
-      ./$f
+      $f
     done
   fi
 }
