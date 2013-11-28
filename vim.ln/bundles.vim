@@ -6,7 +6,7 @@ filetype off
 
 Bundle 'gmarik/vundle'
 
-Bundle 'andrewradev/splitjoin.vim'
+Bundle 'AndrewRadev/splitjoin.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'corntrace/bufexplorer'
