@@ -14,7 +14,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "chruby ruby-1.9.3" >> ~/.bash_profile
   fi
 fi
+
 echo
+
 read -p "Install ruby 2.0.0 with chruby? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then

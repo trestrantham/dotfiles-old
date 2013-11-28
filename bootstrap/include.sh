@@ -15,37 +15,17 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `default` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-function install_gcc {
-  # Ensure that we have gcc
-  if [[ ! "$(type -P gcc)" ]]; then
-    e_arrow "Couldn't find Xcode or Command Line Tools. Trying to install Command Line Tools now."
-
-    # Install CLI Tools
-    source $SCRIPT_PATH/config/install_cli_tools.sh
-
-    if [[ $? != 0 ]]; then
-      e_error "GCC did not install successfully. Try again."
-    else
-      e_success "GCC installed successfully."
-      e_arrow "You must open Xcode to accept the license terms before continuing."
-    fi
-  else
-    e_arrow "GCC is installed."
-  fi
-}
-
 function install_dotfiles {
   # Symlink all our `.ln` files
 
   for f in `find ${SCRIPT_PATH%/*} -name '*.ln'`; do
-echo $f
     filename=$(basename "$f")
+
     if [ -e "$HOME/.${filename%.ln}" ]
     then
-echo 'removing'
       rm "$HOME/.${filename%.ln}"
     fi
-echo $filename
+
     ln -s -f "$( greadlink -f "$f" )" "$HOME/.${filename%.ln}"
   done
 
@@ -69,12 +49,6 @@ function install_homebrew {
   else
     e_arrow "Homebrew is installed."
   fi
-
-  # If still no homebrew, die in a fire
-  if [[ ! "$(type -P brew)" ]]; then
-    e_error "Homebrew must be installed before continuing."
-    exit 1
-  fi
 }
 
 function install_formulas {
@@ -93,8 +67,6 @@ function install_defaults {
     for f in `find $SCRIPT_PATH/osx/system -name '*.sh'`; do
       ./$f
     done
-  else
-    e_arrow "Skipping system defaults"
   fi
 
   echo
@@ -104,8 +76,6 @@ function install_defaults {
     for f in `find $SCRIPT_PATH/osx/mas_apps -name '*.sh'`; do
       ./$f
     done
-  else
-    e_arrow "Skipping Mac App Store applications"
   fi
 
   echo
@@ -115,8 +85,6 @@ function install_defaults {
     for f in `find $SCRIPT_PATH/osx/cask_apps -name '*.sh'`; do
       ./$f
     done
-  else
-    e_arrow "Skipping Cask applications"
   fi
 }
 
