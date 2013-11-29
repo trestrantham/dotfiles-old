@@ -13,4 +13,4 @@ shopt -s histappend
 export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
 # Rubies source directory
-export SRC_DIR="~/.rubies/src"
+export SRC_DIR="$HOME/.rubies/src"
