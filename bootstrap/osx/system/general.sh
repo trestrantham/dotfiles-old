@@ -34,7 +34,7 @@ defaults write com.apple.menuextra.battery ShowPercent -string "NO"
 defaults write com.apple.menuextra.battery ShowTime -string "YES"
 
 e_rocket "Hiding Time Machine and Volume menubar icons"
-sudo defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/AirPort.menu" "/System/Library/CoreServices/Menu Extras/Battery.menu" "/System/Library/CoreServices/Menu Extras/Clock.menu"
+sudo defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/AirPort.menu" "/System/Library/CoreServices/Menu Extras/Clock.menu"
 sudo defaults -currentHost write com.apple.systemuiserver dontAutoLoad -array "/System/Library/CoreServices/Menu Extras/TimeMachine.menu"
 
 e_rocket "Setting sidebar icon size to small"
