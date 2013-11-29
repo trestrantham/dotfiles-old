@@ -7,9 +7,6 @@ source ${SCRIPT_PATH%/*/*}/include.sh
 e_header "iStat Menus"
 ###############################################################################
 
-e_rocket "Applying serial key"
-defaults write com.bjango.istatmenus serial4 -string "ship-door-swim-9361-37181892-4"
-
 e_rocket "Hiding diagnositics"
 defaults write com.bjango.istatmenus sendDiagnosticsShown -bool true
 
