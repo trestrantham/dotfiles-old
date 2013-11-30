@@ -12,4 +12,4 @@ file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
 [ -e "${file}" ] && mv -f "${file}" "${file}.bak"
 
 e_rocket "Changing menu bar icon to black"
-for p in /Applications/Dropbox.app/Contents/Resources/*-lep.tiff; do echo cp $p ${p/-lep./.}; done
+for p in /Applications/Dropbox.app/Contents/Resources/*-lep.tiff; do cp $p ${p/-lep./.}; done
