@@ -103,7 +103,3 @@ sudo nvram boot-args="mbasd=1"
 
 e_rocket "Showing the ~/Library folder"
 chflags nohidden ~/Library
-
-e_rocket "Removing Dropbox's green checkmark icons in Finder"
-file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
-[ -e "${file}" ] && mv -f "${file}" "${file}.bak"
