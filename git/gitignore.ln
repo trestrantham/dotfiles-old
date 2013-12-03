@@ -9,5 +9,6 @@
 /.rvmrc
 /bin/*
 /chromedriver.log
+/config/database.yml
 /vendor/bundle
 bundle/**
