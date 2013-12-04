@@ -1,4 +1,5 @@
-export PATH="./bin:~/bin:/usr/local/bin:/usr/local/share/npm/bin:$PATH"
+export HOMEBREW="/usr/local/bin:/usr/local/sbin"
+export PATH="./bin:~/bin:$HOMEBREW:/usr/local/share/npm/bin:$PATH"
 export EDITOR="vim"
 export NODE_PATH="/usr/local/lib/node"
 export LANG="en_US.UTF-8"
