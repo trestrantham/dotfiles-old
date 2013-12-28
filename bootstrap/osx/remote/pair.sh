@@ -28,3 +28,6 @@ for user in "${users[@]}"; do
   e_arrow "Adding GitHub public keys for $user"
   gh-auth add --users $user --command="$( which tmux ) attach -t pair"
 done
+
+# Install pow
+sudo curl get.pow.cx | sh

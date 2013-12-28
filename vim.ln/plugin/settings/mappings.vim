@@ -49,3 +49,8 @@ map <leader>t"  :Tabularize first_double_quote<cr>
 map <leader>t{  :Tabularize first_left_stash<cr>
 map <leader>t}  :Tabularize first_right_stash<cr>
 map <leader>t\| :Tabularize bar<cr>
+
+""" Ruby 1.9
+nnoremap <Leader>: :%s/:\([^ ]*\)\(\s*\)=>/\1:/gc<CR>
+nnoremap <Leader>{ :%s/{\([^ ]\)/{ \1/gc<CR>
+nnoremap <Leader>} :%s/\([^ ]\)}/\1 }/gc<CR>
