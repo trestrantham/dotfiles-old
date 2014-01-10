@@ -12,3 +12,7 @@ echo
 read -p "Install ruby 2.0.0 with chruby? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then ruby-install ruby 2.0.0; fi
+
+read -p "Install ruby 2.1.0 with chruby? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then ruby-install ruby 2.1.0; fi
