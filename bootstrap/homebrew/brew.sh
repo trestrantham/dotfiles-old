@@ -21,6 +21,7 @@ install_formula homebrew/dupes/grep
 install_formula homebrew/dupes/screen
 install_formula libyaml
 install_formula mysql
+install_formula npm
 install_formula openssl
 install_formula postgresql
 install_formula qt # --HEAD
