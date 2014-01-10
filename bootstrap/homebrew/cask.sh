@@ -21,6 +21,7 @@ install_cask iterm2
 install_cask keepassx
 install_cask knock
 install_cask mou
+install_cask picturelife
 install_cask sublime-text
 install_cask transmission
 install_cask vlc
