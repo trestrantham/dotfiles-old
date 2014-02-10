@@ -11,9 +11,9 @@ e_rocket "Creating aliases for Pair and pair"
 sudo dscl . -append /Users/$USER RecordName Pair pair
 
 e_rocket "Disabling SSH password authentication"
-sudo perl -pi -e 's/^#PasswordAuthentication/PasswordAuthentication/' /etc/sshd_config
-sudo perl -pi -e 's/^#ChallengeResponseAuthentication/ChallengeResponseAuthentication/' /etc/sshd_config
-sudo perl -pi -e 's/^ChallengeResponseAuthentication\s+yes/ChallengeResponseAuthentication no/' /etc/sshd_config
+sed -i.bak 's/^#PasswordAuthentication/PasswordAuthentication/' sshd_config
+sed -i.bak 's/^#ChallengeResponseAuthentication/ChallengeResponseAuthentication/' /etc/sshd_config
+sed -i.bak 's/^ChallengeResponseAuthentication\s+yes/ChallengeResponseAuthentication no/' /etc/sshd_config
 
 e_rocket "Configuring SSH public keys"
 touch ~/.ssh/authorized_keys
