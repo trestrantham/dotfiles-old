@@ -12,5 +12,5 @@ alias rgm='rails generate model'
 alias rgmg='rails generate migration'
 alias rgc='rails generate controller'
 
-alias rerd='rake erd filetype=dot && dot -Tpdf erd.dot > erd.pdf && rm erd.dot && open erd.pdf'
+alias rerd='rake erd attributes=foreign_keys,primary_keys,inheritance,content filetype=dot && dot -Tpdf erd.dot > erd.pdf && rm erd.dot && open erd.pdf'
 alias cov='COVERAGE=true rspec && open coverage/index.html'
