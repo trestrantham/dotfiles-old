@@ -1,9 +1,9 @@
-" let g:solarized_termcolors=16
-" colorscheme solarized
-
 syntax enable
 set background=dark
-" colorscheme molokai
-" let g:rehash256 = 1
-
 colorscheme monokai
+
+hi! link SignColumn LineNr
+hi! link GitGutterChange DiffChange
+hi! link GitGutterAdd DiffAdd
+hi! link GitGutterDelete DiffDelete
+hi! link GitGutterAddDelete DiffAddDelete

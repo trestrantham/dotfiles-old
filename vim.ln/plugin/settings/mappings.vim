@@ -54,3 +54,6 @@ map <leader>t\| :Tabularize bar<cr>
 nnoremap <Leader>: :%s/:\([^ ]*\)\(\s*\)=>/\1:/gc<CR>
 nnoremap <Leader>{ :%s/{\([^ ]\)/{ \1/gc<CR>
 nnoremap <Leader>} :%s/\([^ ]\)}/\1 }/gc<CR>
+
+""" Dash
+map <leader>h :Dash<cr>
