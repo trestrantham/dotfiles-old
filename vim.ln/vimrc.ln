@@ -83,5 +83,10 @@ set foldnestmax=10    " deepest fold is 10 levels
 set nofoldenable      " don't fold by defaul
 set foldlevel=2
 
+" toggle paste
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
 " Source .vimrc on save
 autocmd! bufwritepost ~/.vimrc  source ~/.vimrc

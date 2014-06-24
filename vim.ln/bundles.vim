@@ -35,3 +35,8 @@ Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-ruby/vim-ruby'
+
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle "honza/vim-snippets"
