@@ -18,6 +18,7 @@
 
 [alias]
   ctags = !.git/hooks/ctags
+	start = !git init && git commit --allow-empty -m \"Initial commit\"
 
 [github]
   user = trestrantham
