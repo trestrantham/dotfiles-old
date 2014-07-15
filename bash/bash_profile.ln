@@ -17,8 +17,8 @@ for f in `find $DIR -name '*.bash'`; do source "$f"; done
 
 # Set a default ruby
 source /usr/local/share/chruby/chruby.sh # Load chruby
-source /usr/local/share/chruby/auto.sh # Set chruby to auto-switch rubies
 chruby ruby-2.1.2
+source /usr/local/share/chruby/auto.sh # Set chruby to auto-switch rubies AFTER initial chruby
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
