@@ -60,6 +60,8 @@ hi Todo           ctermfg=95    ctermbg=NONE  cterm=inverse,bold guifg=#75715e  
 hi Type           ctermfg=NONE  ctermbg=NONE  cterm=NONE        guifg=NONE      guibg=NONE      gui=NONE
 hi Underlined     ctermfg=NONE  ctermbg=NONE  cterm=underline   guifg=NONE      guibg=NONE      gui=underline
 
+hi elixirAtom     ctermfg=141   ctermbg=NONE  cterm=NONE  guifg=#f92672   guibg=NONE  gui=NONE
+
 hi rubyClass                    ctermfg=197   ctermbg=NONE  cterm=NONE  guifg=#f92672   guibg=NONE  gui=NONE
 hi rubyFunction                 ctermfg=148   ctermbg=NONE  cterm=NONE  guifg=#a6e22e   guibg=NONE  gui=NONE
 hi rubyInterpolationDelimiter   ctermfg=NONE  ctermbg=NONE  cterm=NONE  guifg=NONE      guibg=NONE  gui=NONE
