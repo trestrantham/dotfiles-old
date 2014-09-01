@@ -6,7 +6,8 @@ start() {
       ;;
     postgresql)
       # pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
-      brew services start postgres
+      # brew services start postgres
+      launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
       ;;
     mongo)
       mongod run --config /usr/local/etc/mongod.conf

@@ -18,7 +18,7 @@ sed -i.bak 's/^ChallengeResponseAuthentication\s+yes/ChallengeResponseAuthentica
 e_rocket "Configuring SSH public keys"
 touch ~/.ssh/authorized_keys
 
-users=( albus522 bryckbost danielmorrison emilford \
+users=( andrewbredow albus522 bryckbost danielmorrison emilford \
         ersatzryan gaffneyc jasonroelofs jcarpenter88 \
         laserlemon manlycode pichot tbugai trestrantham )
 
