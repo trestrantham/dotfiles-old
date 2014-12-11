@@ -17,7 +17,7 @@ for f in `find $DIR -name '*.bash'`; do source "$f"; done
 
 # Set a default ruby
 source /usr/local/share/chruby/chruby.sh # Load chruby
-chruby ruby-2.1.2
+chruby ruby-2.1.4
 source /usr/local/share/chruby/auto.sh # Set chruby to auto-switch rubies AFTER initial chruby
 
 ### Added by the Heroku Toolbelt
@@ -26,3 +26,4 @@ export PATH="/usr/local/heroku/bin:$PATH"
 ### Setup Elixir version manager
 . /usr/local/erlang/activate
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+PATH=$PATH:$HOME/.cli-scripts/bin

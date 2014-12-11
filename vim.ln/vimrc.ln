@@ -88,5 +88,9 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
+" use the system clipboard by default, requires a Vim compiled
+" with +clipboard - `brew install vim` is the easiest way
+set clipboard=unnamed
+
 " Source .vimrc on save
 autocmd! bufwritepost ~/.vimrc  source ~/.vimrc

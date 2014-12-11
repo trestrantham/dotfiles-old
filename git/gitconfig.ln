@@ -22,6 +22,7 @@
 
 [github]
   user = trestrantham
+	domain = http://marcom-github.com
 
 [push]
   default = current
@@ -29,5 +30,9 @@
 [web]
   broswer = open
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[jira]
+	token = dHRyYW50aGFtOjNSWEZkZFVaWVVHbzhEWmNIVEt0\n
+	domain = marcom-jira.apple.com

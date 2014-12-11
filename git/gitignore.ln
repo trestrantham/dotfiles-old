@@ -7,7 +7,6 @@
 /.rbenv-version
 /.ruby-version
 /.rvmrc
-/bin/*
 /chromedriver.log
 /config/database.yml
 /vendor/bundle

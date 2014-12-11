@@ -87,8 +87,8 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 e_rocket "Check for software updates daily"
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
-e_rocket "Disabling Notification Center"
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+# e_rocket "Disabling Notification Center"
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
 e_rocket "Disabling smart quotes"
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
@@ -96,11 +96,11 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 e_rocket "Disabling smart dashes"
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
-e_rocket "Changing appearance color to Graphite"
-defaults write -g 'AppleAquaColorVariant' -int 6
+# e_rocket "Changing appearance color to Graphite"
+# defaults write -g 'AppleAquaColorVariant' -int 6
 
-e_rocket "Changing highlight color to Graphite"
-defaults write -g 'AppleHighlightColor' -string '0.7804 0.8157 0.8588'
+# e_rocket "Changing highlight color to Graphite"
+# defaults write -g 'AppleHighlightColor' -string '0.7804 0.8157 0.8588'
 
 e_rocket "Setting screen savers to Flurry"
 sudo defaults write com.apple.screensaver moduleName "Flurry"
