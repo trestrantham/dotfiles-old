@@ -18,8 +18,8 @@ install_cask google-chrome
 install_cask heroku-toolbelt
 install_cask istat-menus
 install_cask iterm2
-install_cask keepassx
 # install_cask knock
+install_cask macpass
 # install_cask mou
 install_cask picturelife
 # install_cask sublime-text
