@@ -7,6 +7,14 @@ source ~/.vim/bundles.vim
 
 syntax enable
 set ruler
+filetype on
+au BufNewFile,BufRead *.eex set filetype=eruby
+au BufNewFile,BufRead *.eex set syntax=html
+augroup Markdown
+  autocmd!
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.md set spell
+augroup END
 
 " show a highlight on column 80
 set colorcolumn=80
@@ -94,3 +102,8 @@ set clipboard=unnamed
 
 " Source .vimrc on save
 autocmd! bufwritepost ~/.vimrc  source ~/.vimrc
+
+set mouse=a
+if exists("$TMUX")
+  set ttymouse=xterm2
+endif
