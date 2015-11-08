@@ -104,6 +104,3 @@ set clipboard=unnamed
 autocmd! bufwritepost ~/.vimrc  source ~/.vimrc
 
 set mouse=a
-if exists("$TMUX")
-  set ttymouse=xterm2
-endif
