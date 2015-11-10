@@ -104,3 +104,7 @@ set clipboard=unnamed
 autocmd! bufwritepost ~/.vimrc  source ~/.vimrc
 
 set mouse=a
+
+" Don't save history for netr
+:let g:netrw_dirhistmax = 0
+endfor
