@@ -13,3 +13,7 @@ alias cdh='cd ~/Dropbox/Development/rails/hackerbody'
 alias cda='cd ~/Development/runway/repos'
 alias cdp='cd ~/Development/runway/repos/packaging'
 alias vim='nvim'
+
+alias dbmg="[ -f mix.exs ] && mix ecto.migrate || rake db:migrate"
+alias dbrb="[ -f mix.exs ] && mix ecto.rollback || rake db:rollback"
+alias con="[ -f mix.exs ] && iex -S mix || bundle exec rails c"
