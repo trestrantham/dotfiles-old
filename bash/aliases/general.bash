@@ -9,11 +9,12 @@ alias cddf='cd ~/.dotfiles'
 alias cde='cd ~/Dropbox/Development/elixir'
 alias cdi='cd ~/Dropbox/Development/ios'
 alias cdr='cd ~/Dropbox/Development/rails'
-alias cdh='cd ~/Dropbox/Development/rails/hackerbody'
 alias cda='cd ~/Development/runway/repos'
-alias cdp='cd ~/Development/runway/repos/packaging'
 alias vim='nvim'
 
 alias dbmg="[ -f mix.exs ] && mix ecto.migrate || rake db:migrate"
 alias dbrb="[ -f mix.exs ] && mix ecto.rollback || rake db:rollback"
-alias con="[ -f mix.exs ] && iex -S mix || bundle exec rails c"
+alias console="[ -f mix.exs ] && iex -S mix || bundle exec rails c"
+alias con="console"
+alias server="[ -f mix.exs ] && mix phoenix.server || bundle exec rails s"
+alias serv="server"
