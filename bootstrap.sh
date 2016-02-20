@@ -22,7 +22,6 @@ select opt in "${options[@]}"; do
       install_formulas
       install_casks
       install_defaults
-      create_pair_user
       install_asdf
       install_rubies
       install_erlangs
