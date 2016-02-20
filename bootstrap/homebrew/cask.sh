@@ -7,24 +7,19 @@ e_header "Setting up Homebrew Casks"
 brew tap phinze/homebrew-cask 2>/dev/null
 brew install brew-cask 2>/dev/null
 
-# install_cask alfred
-# install_cask backblaze-downloader
-# install_cask bartender
-# install_cask bittorrent-sync
-# install_cask cloak
+install_cask 1password
+install_cask bartender
+install_cask divvy
 install_cask dropbox
 install_cask github-desktop
 install_cask google-chrome
 install_cask heroku-toolbelt
-# install_cask istat-menus
-# install_cask iterm2
-# install_cask knock
-# install_cask macpass
-# install_cask mou
-# install_cask picturelife
-# install_cask sublime-text
-# install_cask transmission
-# install_cask vlc
+install_cask istat-menus
+install_cask slack
+install_cask the-unarchiver
+install_cask things
+install_cask transmission
+install_cask vlc
 
 # Save IFS
 _IFS=$IFS

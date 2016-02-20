@@ -17,10 +17,10 @@ options=("Bootstrap all the things" "Dotfiles" "Homebrew" \
 select opt in "${options[@]}"; do
   case $opt in
     "Bootstrap all the things")
-      install_dotfiles
       install_homebrew
       install_formulas
       install_casks
+      install_dotfiles
       install_defaults
       install_asdf
       install_rubies

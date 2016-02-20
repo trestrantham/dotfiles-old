@@ -27,9 +27,6 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseTwoFingerHor
 defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseVerticalScroll -int 1
 defaults write com.apple.driver.AppleBluetoothMultitouch.mouse UserPreference -int 1
 
-e_rocket "Increasing sound quality for Bluetooth headphones/headsets"
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
-
 e_rocket "Enabling full keyboard access for all controls"
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
@@ -55,12 +52,3 @@ defaults write com.apple.BezelServices kDim -bool true
 
 e_rocket "Setting 5 minute timeout for keyboard illumination"
 defaults write com.apple.BezelServices kDimTime -int 300
-
-e_rocket "Setting default timezone" # see `systemsetup -listtimezones` for other values
-systemsetup -settimezone "America/Detroit" > /dev/null
-
-# e_rocket "Disable auto-correct"
-# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
-# e_rocket "Disabling iTunes from responding to the keyboard media keys"
-# launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null

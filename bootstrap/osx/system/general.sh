@@ -23,20 +23,6 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MA
 e_rocket "Setting standby delay to 24 hours"
 sudo pmset -a standbydelay 86400
 
-# e_rocket "Disabling sound effects on boot"
-# sudo nvram SystemAudioVolume=" "
-
-# e_rocket "Disabling menubar transparency"
-# defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
-
-# e_rocket "Configuring menubar battery time and percentage"
-# defaults write com.apple.menuextra.battery ShowPercent -string "NO"
-# defaults write com.apple.menuextra.battery ShowTime -string "YES"
-
-# e_rocket "Hiding Time Machine and Volume menubar icons"
-# sudo defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/AirPort.menu" "/System/Library/CoreServices/Menu Extras/Clock.menu"
-# sudo defaults -currentHost write com.apple.systemuiserver dontAutoLoad -array "/System/Library/CoreServices/Menu Extras/TimeMachine.menu"
-
 e_rocket "Setting sidebar icon size to small"
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 
@@ -62,45 +48,20 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 e_rocket "Disabling confirm open application dialog"
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
-e_rocket "Displaying ASCII control characters using caret notation"
-defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
-
-e_rocket "Disabling resume system-wide"
-defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
-
-e_rocket "Disabling automatic termination of inactive apps"
-defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
-
-# e_rocket "Disabling the crash reporter"
-# defaults write com.apple.CrashReporter DialogType -string "none"
-
 e_rocket "Setting Help Viewer windows to non-floating mode"
 defaults write com.apple.helpviewer DevMode -bool true
 
 e_rocket "Reveal IP address, hostname, OS version when clicking clock in login window"
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
-# e_rocket "Disabling sleep mode"
-# systemsetup -setcomputersleep Off > /dev/null
-
 e_rocket "Check for software updates daily"
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-
-# e_rocket "Disabling Notification Center"
-# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
 e_rocket "Disabling smart quotes"
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 e_rocket "Disabling smart dashes"
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-
-# e_rocket "Changing appearance color to Graphite"
-# defaults write -g 'AppleAquaColorVariant' -int 6
-
-# e_rocket "Changing highlight color to Graphite"
-# defaults write -g 'AppleHighlightColor' -string '0.7804 0.8157 0.8588'
 
 e_rocket "Setting screen savers to Flurry"
 sudo defaults write com.apple.screensaver moduleName "Flurry"

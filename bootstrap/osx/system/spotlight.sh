@@ -7,9 +7,6 @@ source ${SCRIPT_PATH%/*/*}/include.sh
 e_header "Spotlight"
 ###############################################################################
 
-# e_rocket "Hiding tray-icon and helper"
-# sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
-
 e_rocket "Disabling indexing for any volume that's mounted and hasn't yet been indexed"
 # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
 sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
