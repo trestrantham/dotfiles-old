@@ -8,10 +8,10 @@ e_header "General UI/UX"
 ###############################################################################
 
 e_rocket "Setting computer name"
-sudo scutil --set ComputerName "Icarus"
-sudo scutil --set HostName "Icarus"
-sudo scutil --set LocalHostName "Icarus"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Icarus"
+sudo scutil --set ComputerName "Prometheus"
+sudo scutil --set HostName "Prometheus"
+sudo scutil --set LocalHostName "Prometheus"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Prometheus"
 
 e_rocket "Disabling Guest account"
 sudo defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool FALSE
