@@ -7,6 +7,9 @@ source ${SCRIPT_PATH%/*/*}/include.sh
 e_header "Safari & WebKit"
 ###############################################################################
 
+e_rocket "Show full URL"
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
 e_rocket "Setting home page to 'about:blank'"
 defaults write com.apple.Safari HomePage -string "about:blank"
 

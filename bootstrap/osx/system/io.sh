@@ -7,10 +7,10 @@ source ${SCRIPT_PATH%/*/*}/include.sh
 e_header "Trackpad, mouse, keyboard, Bluetooth accessories, and input"
 ###############################################################################
 
-e_rocket "Enabling tap to click for this user and for the login screen"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# e_rocket "Enabling tap to click for this user and for the login screen"
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+# defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 e_rocket "Setting mouse tracking speed"
 defaults write NSGlobalDoman com.apple.mouse.scaling 3.0

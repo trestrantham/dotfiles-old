@@ -50,7 +50,7 @@ function install_homebrew {
   if [[ ! "$(type -P brew)" ]]; then
     e_arrow "Couldn't find Homebrew. Trying to install now."
 
-    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     if [[ $? != 0 ]]; then
       e_error "Homebrew did not install successfully. Try again."
