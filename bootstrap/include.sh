@@ -41,8 +41,8 @@ function install_dotfiles {
     ln -s -f "$( greadlink -f "$f" )" "$HOME/.${filename%.ln}"
   done
 
-  # Run vundler
-  vim -u ~/.vim/bundles.vim +BundleInstall +qall
+  # Install Plugs
+  vim -u ~/.vim/plugs.vim +PlugInstall +qall
 }
 
 function install_homebrew {
