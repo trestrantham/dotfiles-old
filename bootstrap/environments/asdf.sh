@@ -5,7 +5,7 @@ source ${SCRIPT_PATH%/*}/include.sh
 
 # Install ASDF to manage version for various runtimes
 
-read -p "Install ASDF?" -n 1 -r
+read -p "Install ASDF? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   if [ -e "$HOME/.asdf" ]; then

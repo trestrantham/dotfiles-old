@@ -12,7 +12,7 @@ echo
 PS3=$'\nPick your poison: '
 options=("Bootstrap all the things" "Dotfiles" "Homebrew" \
          "Homebrew Formulas" "Homebrew Casks" "OS X Defaults" "ASDF" "Ruby" \
-         "Erlang" "Elixir" "Remote Pair" "Quit")
+         "Erlang" "Elixir" "Quit")
 
 select opt in "${options[@]}"; do
   case $opt in
