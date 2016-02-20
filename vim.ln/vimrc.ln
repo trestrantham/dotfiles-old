@@ -3,7 +3,7 @@ let mapleader=","
 set nocompatible
 set encoding=utf-8
 
-source ~/.vim/bundles.vim
+source ~/.vim/plugs.vim
 
 syntax enable
 set ruler
