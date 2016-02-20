@@ -7,21 +7,6 @@ source ${SCRIPT_PATH%/*/*}/include.sh
 e_header "Finder"
 ###############################################################################
 
-# e_rocket "Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons"
-# defaults write com.apple.finder QuitMenuItem -bool true
-
-# e_rocket "Disabling Finder window and Get Info animations"
-# defaults write com.apple.finder DisableAllAnimations -bool true
-
-# e_rocket "Showing icons for hard drives, servers, and removable media on the desktop"
-# defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-# defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
-# defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
-# defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
-
-# e_rocket "Showing hidden files in Finder"
-# defaults write com.apple.finder AppleShowAllFiles -bool true
-
 e_rocket "Showing all filename extensions in Finder"
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
@@ -62,14 +47,6 @@ defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
 defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
-# e_rocket "Show item info near icons on the desktop and in other icon views"
-# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-# /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-# /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-
-# e_rocket "Show item info to the right of the icons on the desktop"
-# /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist
-
 e_rocket "Enabling snap-to-grid for the desktop and icon views"
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
@@ -94,12 +71,6 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 e_rocket "Setting empty Trash securely as default"
 defaults write com.apple.finder EmptyTrashSecurely -bool true
-
-e_rocket "Enabling AirDrop over Ethernet and on unsupported Macs running Lion"
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
-
-e_rocket "Enabling the MacBook Air SuperDrive on any Mac"
-sudo nvram boot-args="mbasd=1"
 
 e_rocket "Showing the ~/Library folder"
 chflags nohidden ~/Library
