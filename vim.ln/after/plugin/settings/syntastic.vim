@@ -1,8 +1,8 @@
-" Open error window when errors detected, otherwise close
-let g:syntastic_auto_loc_list=1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" Disable warnings
-let g:syntastic_quiet_messages = {'level': 'warning'}
-
-" Turn on JSX highlighting for JS files
-let g:jsx_ext_required = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0

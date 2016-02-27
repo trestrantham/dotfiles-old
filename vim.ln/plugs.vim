@@ -27,7 +27,7 @@ Plug 'rizzatti/funcoo.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic', { 'for': ['elixir', 'ruby', 'javascript', 'css'] }
+Plug 'scrooloose/syntastic'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
