@@ -14,4 +14,4 @@ alias statso="stats --one-line"
 # Database
 alias dbm="[ -f mix.exs ] && mix ecto.migrate || rake db:migrate"
 alias dbrb="[ -f mix.exs ] && mix ecto.rollback || rake db:rollback"
-alias dbmg="[ -f mix.exs ] && mix ecto.gen.migration || rails generate migration"
+alias dbmg="[ -f mix.exs ] && mix ecto.gen.migration"

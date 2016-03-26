@@ -13,7 +13,6 @@ au BufNewFile,BufRead *.eex set syntax=html
 augroup Markdown
   autocmd!
   autocmd BufRead,BufNewFile *.md set filetype=markdown
-  autocmd BufRead,BufNewFile *.md set spell
 augroup END
 
 " show a highlight on column 80
