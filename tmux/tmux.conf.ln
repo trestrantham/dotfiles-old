@@ -1,3 +1,6 @@
+# if run as "tmux attach", create a session if one does not already exist
+new-session -n $HOST
+
 # use UTF8
 set -g utf8 on
 set-window-option -g utf8 on
