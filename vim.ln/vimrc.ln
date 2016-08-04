@@ -111,3 +111,6 @@ set mouse=a
 if has('nvim')
   nmap <BS> <C-W>h
 endif
+
+" Highlight JSX in JS files
+let g:jsx_ext_required = 0
