@@ -21,3 +21,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 source $HOME/.asdf/asdf.sh
 
 export HOMEBREW_NO_ANALYTICS=1
+
+export NODE_PATH=$NODE_PATH:/Users/Tres/.asdf/installs/nodejs/6.3.1/.npm/lib/node_modules

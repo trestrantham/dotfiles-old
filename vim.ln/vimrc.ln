@@ -16,7 +16,7 @@ augroup Markdown
 augroup END
 
 " show a highlight on column 80
-set colorcolumn=80
+set colorcolumn=100
 
 " no line wraps
 set nowrap
