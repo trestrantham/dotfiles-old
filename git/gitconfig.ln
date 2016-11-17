@@ -18,27 +18,29 @@
 
 [alias]
   ctags = !.git/hooks/ctags
-	start = !git init && git commit --allow-empty -m \"Initial commit\"
+  start = !git init && git commit --allow-empty -m \"Initial commit\"
+  set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 
 [push]
   default = current
 
 [web]
   broswer = open
-  
+
 [filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-	
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
+
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
-	
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
+
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
+
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
