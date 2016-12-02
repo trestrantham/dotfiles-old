@@ -9,7 +9,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   e_rocket "Installing Erlang $SYSTEM_ERLANG_VERSION"
 
   source $HOME/.asdf/asdf.sh
-  asdf plugin-add erlang https://github.com/HashNuke/asdf-erlang.git
+  asdf plugin-add erlang https://github.com/adsf-vm/asdf-erlang.git
 
   ERLANG_CONFIGURE_OPTIONS="--enable-darwin-64bit --with-ssl=/usr/local/opt/openssl"
 

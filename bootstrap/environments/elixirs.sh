@@ -9,7 +9,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   e_rocket "Installing Elixir $SYSTEM_ELIXIR_VERSION"
 
   source $HOME/.asdf/asdf.sh
-  asdf plugin-add elixir https://github.com/HashNuke/asdf-elixir.git
+  asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 
   asdf install elixir $SYSTEM_ELIXIR_VERSION
 fi

@@ -120,6 +120,11 @@ function install_elixirs() {
   source $SCRIPT_PATH/environments/elixirs.sh
 }
 
+# Nodes
+function install_nodes() {
+  source $SCRIPT_PATH/environments/nodes.sh
+}
+
 # Brew formulas
 function install_formula() {
   e_header "Installing ${@}"

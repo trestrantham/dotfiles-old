@@ -15,7 +15,6 @@ install_cask github-desktop
 install_cask google-chrome
 install_cask heroku-toolbelt
 install_cask istat-menus
-install_cask slack
 install_cask the-unarchiver
 install_cask things
 install_cask transmission
