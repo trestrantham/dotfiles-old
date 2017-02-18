@@ -26,3 +26,5 @@ export NODE_PATH=$NODE_PATH:/Users/Tres/.asdf/installs/nodejs/6.3.1/.npm/lib/nod
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export ANDROID_NDK=/usr/local/Cellar/android-ndk/r10e
+
+export PATH="$HOME/.yarn/bin:$PATH"
