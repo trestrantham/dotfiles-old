@@ -11,6 +11,10 @@ set -g history-limit 30000
 # make tmux display things in 256 colors
 set -g default-terminal "screen-256color"
 
+# use system clipboard
+set -g default-shell $SHELL
+set -g default-command "reattach-to-user-namespace -l ${SHELL}"
+
 # shorten command delay
 set -sg escape-time 1
 
@@ -33,19 +37,11 @@ setw -g mode-keys vi
 
 # Setup 'v' to begin selection as in Vim
 bind-key -t vi-copy v begin-selection
-bind-key -t vi-copy y copy-pipe "pbcopy"
+bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
 
 # Update default binding of `Enter` to also use copy-pipe
 unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "pbcopy"
-
-# Setup 'v' to begin selection as in Vim
-bind-key -t vi-copy v begin-selection
-bind-key -t vi-copy y copy-pipe "pbcopy"
-
-# Update default binding of `Enter` to also use copy-pipe
-unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "pbcopy"
+bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
 
 # Smart pane switching with awareness of vim splits
 # See: https://github.com/christoomey/vim-tmux-navigator
