@@ -23,3 +23,6 @@ source $HOME/.asdf/asdf.sh
 export HOMEBREW_NO_ANALYTICS=1
 
 export NODE_PATH=$NODE_PATH:/Users/Tres/.asdf/installs/nodejs/6.3.1/.npm/lib/node_modules
+
+export ANDROID_HOME=/usr/local/opt/android-sdk
+export ANDROID_NDK=/usr/local/Cellar/android-ndk/r10e
