@@ -100,7 +100,7 @@ set showmode
 set clipboard=unnamed
 
 " Source .vimrc on save
-autocmd! bufwritepost ~/.vimrc  source ~/.vimrc
+autocmd! bufwritepost ~/.vimrc nested source ~/.vimrc
 
 set mouse=a
 
@@ -114,3 +114,6 @@ endif
 
 " Highlight JSX in JS files
 let g:jsx_ext_required = 0
+
+" Lightline config
+source ~/.vim/after/plugin/settings/lightline.vim
