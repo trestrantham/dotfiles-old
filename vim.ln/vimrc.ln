@@ -115,5 +115,8 @@ endif
 " Highlight JSX in JS files
 let g:jsx_ext_required = 0
 
+" Use skinny cursor when in insert mode
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE = '1'
+
 " Lightline config
 source ~/.vim/after/plugin/settings/lightline.vim
