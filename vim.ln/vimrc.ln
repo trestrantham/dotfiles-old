@@ -15,8 +15,8 @@ augroup Markdown
   autocmd BufRead,BufNewFile *.md set filetype=markdown
 augroup END
 
-" show a highlight on column 80
-set colorcolumn=100
+" show a highlight on column 120
+set colorcolumn=120
 
 " no line wraps
 set nowrap
