@@ -3,7 +3,7 @@ alias console="[ -f mix.exs ] && iex -S mix || bundle exec rails c"
 alias con="console"
 
 # Server
-alias server="[ -f mix.exs ] && mix phoenix.server || bundle exec rails s"
+alias server="[ -f mix.exs ] && mix phx.server || bundle exec rails s"
 alias serv="server"
 
 # Stats
