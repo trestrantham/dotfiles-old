@@ -15,8 +15,9 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 for f in `find $DIR -name '*.bash'`; do source "$f"; done
 
-### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/Cellar/node/*/bin:$PATH"
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 source $HOME/.asdf/asdf.sh
 
