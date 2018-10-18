@@ -22,3 +22,4 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 source $HOME/.asdf/asdf.sh
 
 export HOMEBREW_NO_ANALYTICS=1
+export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
