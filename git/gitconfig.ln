@@ -3,8 +3,8 @@
   excludesfile = ~/.gitignore
 
 [user]
-  name = Tres Trantham
-  email = tres@trestrantham.com
+	name = Tres Trantham
+	email = tres@trestrantham.com
 
 [author]
   name = Tres Trantham
